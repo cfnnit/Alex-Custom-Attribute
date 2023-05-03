@@ -97,8 +97,11 @@ stock Action CreateBlackHole( int client, float pos[3], const char[] attr )
 	
 	int Iparticle;
 	
-	Iparticle = CreateEntityParticle("eb_tp_vortex01", pos);
+	Iparticle = CreateEntityParticle(TF2_GetClientTeam(client) == TFTeam_Red ? "eb_death_vortex01" : "eb_tp_vortex01", pos);
 	SetEntitySelfDestruct(Iparticle, fDuration);
+	
+	Iparticle = CreateEntityParticle(TF2_GetClientTeam(client) == TFTeam_Red ? "dxhr_lightningball_parent_red" : "dxhr_lightningball_parent_blue", pos);
+	SetEntitySelfDestruct(Iparticle, fDurati
 	
 	Iparticle = CreateEntityParticle(TF2_GetClientTeam(client) == TFTeam_Red ? "raygun_projectile_red_crit" : "raygun_projectile_blue_crit", pos);
 	SetEntitySelfDestruct(Iparticle, fDuration);
